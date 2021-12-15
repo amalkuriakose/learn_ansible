@@ -1,0 +1,14 @@
+- name: add ssh key for user1
+  authorized_key:
+    user: user1
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC1b0WlWzBG9YjDYOxlTDL4EKZ6oHJYbG9KGFqBsJUcBSGS6VR3qx9xl+Us0aFggc0EUX++YdpDmn790yp2QlrDQdrRX1+0wfwAlrkPq2JNgrzUs6/Y4WEIsc+CXwByl4xtf9Icxgu3Fktf7oLK37tlyq9z+/2NOidLFchMNaMlDhaEBQzUYAqX+V4GbGNkxlbSJ1zmJ/89mP+duDMiJ6Ez7QGR7bh1ISvynfXD1C7iZPqaG4JvbClDvUfKTs5fDQhfYV3BKSYL46W0myNGyhjFW3UiRcKKWzH9pdYymv6Hse47nZZF0529fSUo0riS1N2hsobPI1dGqC8PCOFhaAa3"
+
+- name: openssh | generate sshd_config file from template
+  tags: ssh
+  template:
+    src: "{{ ssh_template_file }}"
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart_sshd
