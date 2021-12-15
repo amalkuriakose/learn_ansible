@@ -16,3 +16,9 @@ Ansible is an incredible configuration management and provisioning utility that 
 * Roles
 * Host variables
 * Templates
+
+### Command to run a playbook
+```bash
+  ansible-playbook bootstrap.yaml
+  ansible-playbook site.yaml
+ ```
